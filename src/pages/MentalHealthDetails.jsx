@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
 
+// Import local images
+import specialist1 from '../assets/doc.png';
+import specialist2 from '../assets/doc.png';
+import specialist3 from '../assets/doc.png';
+
 const MentalHealthDetails = () => {
   const [selectedSpecialist, setSelectedSpecialist] = useState(null);
-  const [subscribed, setSubscribed] = useState(false); // Assuming the user is not subscribed
+  const [subscribed, setSubscribed] = useState(false);
 
   const specialists = [
     {
       name: 'Dr. Arantha Shreya Gogoi',
       expertise: 'Psychologist - Postpartum care & Depression',
       price: '₹1500/session',
-      image: 'https://via.placeholder.com/150',
+      image: specialist1, // Local image
     },
     {
-      name: 'Dr. Divyanshi chaudhary',
+      name: 'Dr. Divyanshi Chaudhary',
       expertise: 'Psychiatrist - Anxiety management & Therapy',
       price: '₹2000/session',
-      image: 'https://via.placeholder.com/150',
+      image: specialist2, // Local image
     },
     {
       name: 'Dr. Shreyas B Reddy',
       expertise: 'Psychologist - Cognitive Therapy for Anxiety',
       price: '₹1800/session',
-      image: 'https://via.placeholder.com/150',
+      image: specialist3, // Local image
     },
   ];
 
@@ -69,7 +74,6 @@ const MentalHealthDetails = () => {
             />
           </div>
 
-          {/* Consult a Specialist Section */}
           <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold text-pink-800 mb-8">Consult a Psychologist or Psychiatrist</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

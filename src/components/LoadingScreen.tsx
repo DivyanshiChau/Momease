@@ -23,12 +23,14 @@ export const LoadingScreen = () => {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-pink-600 mb-4"
+            <motion.h1
+              className="text-4xl md:text-6xl font-serif text-pink-600 mb-4"
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
+              <span role="img" aria-label="heart" className="mr-2">❤️</span>
               Dedicated to all mothers
+              <span role="img" aria-label="heart" className="ml-2">❤️</span>
             </motion.h1>
           </motion.div>
         </motion.div>

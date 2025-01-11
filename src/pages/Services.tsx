@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
 import { Star, Heart, Brain, Utensils } from 'lucide-react';
 import NannyDetails from './NannyDetails'; // Importing NannyDetails.jsx file
-import MentalHealthDetails from './MentalHealthDetails'
-import NutritionDetails from './NutritionDetails'
+import MentalHealthDetails from './MentalHealthDetails';
+import NutritionDetails from './NutritionDetails';
+
 export const Services = () => {
   const [showNannyDetails, setShowNannyDetails] = useState(false);
   const [showMentalHealthDetails, setShowMentalHealthDetails] = useState(false);
   const [showNutritionDetails, setShowNutritionDetails] = useState(false);
   const [showHolisticCareDetails, setShowHolisticCareDetails] = useState(false);
+  const [holisticCareComingSoon, setHolisticCareComingSoon] = useState(false); // New state for "Coming Soon"
 
-  const handleButtonClick = (setState) => {
-    setState(true);
+  const handleButtonClick = (setState, serviceType) => {
+    if (serviceType === 'holisticCare') {
+      setHolisticCareComingSoon(true); // Set "Coming Soon" for Holistic Care
+    } else {
+      setState(true); // Show details for other services
+    }
   };
 
   // Conditional rendering for NannyDetails
   if (showNannyDetails) {
-    return <NannyDetails />; // Display NannyDetails component if showNannyDetails is true
+    return <NannyDetails />;
   }
-  
+
   if (showMentalHealthDetails) {
-    return <MentalHealthDetails />; // Display NannyDetails component if showNannyDetails is true
+    return <MentalHealthDetails />;
   }
 
   if (showNutritionDetails) {
-    return <NutritionDetails />; // Display NannyDetails component if showNannyDetails is true
+    return <NutritionDetails />;
   }
-  
 
   return (
     <div className="min-h-screen bg-pink-50 py-12">
@@ -74,7 +79,7 @@ export const Services = () => {
             <div className="transform transition duration-500 hover:scale-105 border-2 border-pink-300 rounded-lg p-6">
               <ServiceCard
                 icon={<Utensils className="w-12 h-12 text-pink-600" />}
-                title="Nutrition Guidance"
+                title="Personalized journey tracker"
                 description="Personalized diet plans from expert dieticians."
                 features={['Customized meal plans', 'Dietary consultations', 'Nutritional workshops', 'Recipe suggestions']}
                 showDetails={showNutritionDetails}
@@ -90,8 +95,14 @@ export const Services = () => {
                 description="Comprehensive wellness programs for mothers."
                 features={['Yoga sessions', 'Meditation guides', 'Physical therapy', 'Sleep consulting']}
                 showDetails={showHolisticCareDetails}
-                onButtonClick={() => handleButtonClick(setShowHolisticCareDetails)}
+                onButtonClick={() => handleButtonClick(setShowHolisticCareDetails, 'holisticCare')}
               />
+              {/* Show "Coming Soon" message if state is true */}
+              {holisticCareComingSoon && (
+                <div className="absolute top-4 right-4 bg-red-600 text-white p-2 rounded-md text-sm">
+                  Coming Soon...
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -102,7 +113,7 @@ export const Services = () => {
 
 // Service Card component
 const ServiceCard = ({ icon, title, description, features, showDetails, onButtonClick }) => (
-  <div className="bg-pink-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-2 border-pink-200">
+  <div className="bg-pink-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-2 border-pink-200 relative">
     <div className="mb-4">{icon}</div>
     <h3 className="text-xl font-semibold text-pink-800 mb-2">{title}</h3>
     <p className="text-pink-600 mb-4">{description}</p>
@@ -125,3 +136,5 @@ const ServiceCard = ({ icon, title, description, features, showDetails, onButton
     )}
   </div>
 );
+
+export default Services;
