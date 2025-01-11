@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Star, Heart, Brain, Utensils } from 'lucide-react';
 import NannyDetails from './NannyDetails'; // Importing NannyDetails.jsx file
 import MentalHealthDetails from './MentalHealthDetails'
-import NutritionGuidance from './NutritionGuidance'
+import NutritionDetails from './NutritionDetails'
 export const Services = () => {
   const [showNannyDetails, setShowNannyDetails] = useState(false);
   const [showMentalHealthDetails, setShowMentalHealthDetails] = useState(false);
@@ -23,7 +23,7 @@ export const Services = () => {
   }
 
   if (showNutritionDetails) {
-    return <MentalHealthDetails />; // Display NannyDetails component if showNannyDetails is true
+    return <NutritionDetails />; // Display NannyDetails component if showNannyDetails is true
   }
   
 

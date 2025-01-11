@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Star, ArrowLeft } from 'lucide-react';
+import { Star, ArrowLeft, X } from 'lucide-react';
+import priyaImage from '../assets/n1.jpg';
+import sarahImage from '../assets/n2.jpg';
+import raniImage from '../assets/n3.jpg';
 
-// Sample nanny data with 3 more nannies added
+
 const nannies = [
   {
     id: 1,
     name: 'Priya Singh',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956',
+    image: raniImage,
     experience: 5,
     motherTongue: 'Hindi',
     rating: 4.8,
@@ -15,7 +18,7 @@ const nannies = [
   {
     id: 2,
     name: 'Sarah Johnson',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2',
+    image: sarahImage,
     experience: 8,
     motherTongue: 'English',
     rating: 4.9,
@@ -23,76 +26,84 @@ const nannies = [
   },
   {
     id: 3,
-    name: 'Meera Patel',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2',
-    experience: 3,
-    motherTongue: 'Gujarati',
+    name: 'Rani Sharma',
+    image: priyaImage,
+    experience: 18,
+    motherTongue: 'Hindi',
     rating: 4.7,
-    specializations: ['Special Needs', 'Early Development'],
-  },
-  {
-    id: 4,
-    name: 'Aisha Khan',
-    image: 'https://images.unsplash.com/photo-1594700563599-5b97abebc170',
-    experience: 6,
-    motherTongue: 'Urdu',
-    rating: 4.6,
-    specializations: ['Multiple Children', 'Postpartum Care'],
-  },
-  {
-    id: 5,
-    name: 'Emily Clark',
-    image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b',
-    experience: 4,
-    motherTongue: 'English',
-    rating: 4.8,
-    specializations: ['Early Child Development', 'First Aid'],
-  },
-  {
-    id: 6,
-    name: 'Neha Sharma',
-    image: 'https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b',
-    experience: 7,
-    motherTongue: 'Punjabi',
-    rating: 4.9,
-    specializations: ['Postpartum Care', 'Twins'],
+    specializations: ['Infant Care', 'Child Nutrition'],
   },
 ];
+const NannyList = () => {
+    return (
+      <div>
+        {nannies.map((nanny) => (
+          <div key={nanny.id} className="nanny-card">
+            <h2>{nanny.name}</h2>
+            <img
+              src={nanny.image}
+              alt={nanny.name}
+              style={nanny.id === 3 ? { transform: 'translateY(20px)', width: '100%', height: 'auto' } : { width: '100%', height: 'auto' }}
+            />
+            <p>Experience: {nanny.experience} years</p>
+            <p>Mother Tongue: {nanny.motherTongue}</p>
+            <p>Rating: <Star /> {nanny.rating}</p>
+            <p>Specializations: {nanny.specializations.join(', ')}</p>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
 const NannyDetails = ({ onBack }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [selectedNanny, setSelectedNanny] = useState(null);
   const [meetingType, setMeetingType] = useState(null);
   const [meetingDate, setMeetingDate] = useState('');
-  const [message, setMessage] = useState('');
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleMeeting = () => {
     if (meetingDate) {
-      setMessage(`Meeting fixed with ${selectedNanny.name} on ${meetingDate}!`);
-    } else {
-      setMessage('Please select a date and time.');
+      // Show notification and close modal
+      setShowMessage(true);
+      setSelectedNanny(null);
+      setMeetingType(null);
+      setMeetingDate('');
+      setTimeout(() => setShowMessage(false), 5000); // Hide notification after 5 seconds
     }
   };
 
+  const closeModal = () => {
+    setSelectedNanny(null);
+    setMeetingType(null);
+    setMeetingDate('');
+  };
+
   return (
-    <div className="min-h-screen bg-pink-50 p-8 animate-fade-in">
-      <button
-        onClick={onBack}
-        className="mb-8 flex items-center text-pink-600 hover:text-pink-700 transition-colors animate-slide-right"
-      >
-        <ArrowLeft className="w-5 h-5 mr-2" />
-        Back to Services
-      </button>
+    <div className="min-h-screen bg-pink-50 p-8 animate-fade-in relative">
+      {showMessage && (
+        <div className="fixed top-5 right-4 bg-pink-600 text-white py-2 px-4 rounded shadow-lg z-50">
+          Meeting fixed on {meetingDate}. More details will be shared shortly.
+        </div>
+      )}
+
+<button
+  onClick={() => window.history.back()} // Use browser history to go back
+  className="mb-8 flex items-center text-pink-600 hover:text-pink-700 transition-colors animate-slide-right"
+>
+  <ArrowLeft className="w-5 h-5 mr-2" />
+  Back to Services
+</button>
 
       <h2 className="text-4xl font-bold text-pink-800 mb-12 text-center animate-slide-down">
         Our Verified Nannies
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {nannies.map((nanny, index) => (
           <div
             key={nanny.id}
-            className={`transform transition-all duration-500 hover:scale-105 animate-slide-up
+            className={`transform transition-all duration-300 hover:scale-102 animate-slide-up
               ${index === 0 ? 'delay-0' : index === 1 ? 'delay-100' : 'delay-200'}`}
             onMouseEnter={() => setHoveredCard(nanny.id)}
             onMouseLeave={() => setHoveredCard(null)}
@@ -107,8 +118,16 @@ const NannyDetails = ({ onBack }) => {
       </div>
 
       {selectedNanny && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative">
+            {/* Cross button to close modal */}
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 text-pink-600 hover:text-pink-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
             <h3 className="text-2xl font-bold mb-4">{`Book a Meeting with ${selectedNanny.name}`}</h3>
             <div className="flex justify-between mb-4">
               <button
@@ -139,12 +158,10 @@ const NannyDetails = ({ onBack }) => {
 
             <button
               onClick={handleMeeting}
-              className="py-2 px-4 bg-pink-500 text-white rounded hover:bg-pink-600 w-full transition"
+              className="py-1 px-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 w-full transition"
             >
               Confirm
             </button>
-
-            {message && <p className="mt-4 text-pink-600">{message}</p>}
           </div>
         </div>
       )}
@@ -166,15 +183,15 @@ const NannyDetails = ({ onBack }) => {
         }
 
         .animate-fade-in {
-          animation: fadeIn 0.8s ease-out;
+          animation: fadeIn 0.5s ease-out;
         }
 
         .animate-slide-down {
-          animation: slideDown 0.8s ease-out;
+          animation: slideDown 0.5s ease-out;
         }
 
         .animate-slide-up {
-          animation: slideUp 0.8s ease-out;
+          animation: slideUp 0.5s ease-out;
         }
 
         .delay-0 { animation-delay: 0s; }
@@ -187,46 +204,50 @@ const NannyDetails = ({ onBack }) => {
 
 const NannyCard = ({ name, image, experience, motherTongue, rating, specializations, isHovered, onSelect }) => (
   <div
-    className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500"
+    className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-200 p-4"
     style={{
-      transform: isHovered ? 'perspective(1000px) rotateX(2deg) rotateY(2deg) scale(1.05)' : 'perspective(1000px)',
-      transformStyle: 'preserve-3d',
+      transform: isHovered ? 'scale(1.02)' : 'scale(1)',
       boxShadow: isHovered
-        ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-        : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        ? '0 10px 15px -5px rgba(0, 0, 0, 0.1), 0 6px 10px -5px rgba(0, 0, 0, 0.05)'
+        : '0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 5px -2px rgba(0, 0, 0, 0.05)',
     }}
   >
     <div className="relative overflow-hidden">
       <img
         src={image}
         alt={name}
-        className={`w-full h-48 object-cover transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`}
+        className={`w-full h-36 object-cover transition-transform duration-200 ${isHovered ? 'scale-102' : 'scale-100'}`}
       />
       <div
-        className={`absolute inset-0 bg-gradient-to-t from-black/30 to-transparent transition-opacity duration-500 ${
+        className={`absolute inset-0 bg-gradient-to-t from-black/30 to-transparent transition-opacity duration-200 ${
           isHovered ? 'opacity-70' : 'opacity-0'
         }`}
       />
     </div>
 
-    <div className="p-6">
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-bold text-pink-900">{name}</h3>
+    <div className="p-4">
+      <div className="flex justify-between items-start mb-2">
+        <h3 className="text-lg font-bold text-pink-900">{name}</h3>
         <div className="flex items-center">
-          <Star className="w-5 h-5 text-yellow-500 mr-1" />
-          <p className="text-sm font-medium text-pink-900">{rating}</p>
+          <Star className="w-4 h-4 text-yellow-500 mr-1" />
+          <p className="text-sm font-medium text-pink-800">{rating}</p>
         </div>
       </div>
 
-      <p className="text-sm text-pink-600 mb-2">{experience} years of experience</p>
-      <p className="text-sm text-pink-600 mb-2">Mother Tongue: {motherTongue}</p>
-      <p className="text-sm text-pink-600 mb-4">
-        Specializations: {specializations.join(', ')}
-      </p>
+      <p className="text-sm text-pink-600 mb-2">{`Experience: ${experience} years`}</p>
+      <p className="text-sm text-pink-600 mb-4">{`Mother Tongue: ${motherTongue}`}</p>
+      <div className="text-sm text-pink-600 mb-4">
+        Specializations:
+        <ul className="list-disc pl-5">
+          {specializations.map((spec, index) => (
+            <li key={index}>{spec}</li>
+          ))}
+        </ul>
+      </div>
 
       <button
         onClick={onSelect}
-        className="py-2 px-4 bg-pink-500 text-white rounded hover:bg-pink-600 transition w-full"
+        className="py-1 px-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition"
       >
         Book
       </button>

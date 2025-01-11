@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NutritionGuidance = () => {
+const NutritionDetails = () => {
   const [activeTab, setActiveTab] = useState('profile');
 
   const renderContent = () => {
@@ -13,18 +13,7 @@ const NutritionGuidance = () => {
         return <InteractiveTrackingTools />;
       case 'consultation':
         return <ConsultationWithDietician />;
-      case 'aiRecommendations':
-        return <AIRecommendations />;
-      case 'education':
-        return <EducationalContent />;
-      case 'devices':
-        return <HealthDeviceIntegration />;
-      case 'community':
-        return <CommunitySupport />;
-      case 'gamification':
-        return <GamificationFeatures />;
-      case 'subscription':
-        return <SubscriptionOptions />;
+      
       default:
         return <UserProfile />;
     }
@@ -41,12 +30,7 @@ const NutritionGuidance = () => {
           { id: 'dietChart', label: 'Diet Chart' },
           { id: 'trackingTools', label: 'Tracking Tools' },
           { id: 'consultation', label: 'Consultation' },
-          { id: 'aiRecommendations', label: 'AI Suggestions' },
-          { id: 'education', label: 'Educational Content' },
-          { id: 'devices', label: 'Device Integration' },
-          { id: 'community', label: 'Community' },
-          { id: 'gamification', label: 'Gamification' },
-          { id: 'subscription', label: 'Subscription' },
+         
         ].map((tab) => (
           <button
             key={tab.id}
@@ -109,46 +93,6 @@ const ConsultationWithDietician = () => (
   </div>
 );
 
-const AIRecommendations = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">AI-Based Recommendations</h2>
-    <p>Get smart meal suggestions and grocery lists here.</p>
-  </div>
-);
 
-const EducationalContent = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">Educational Content</h2>
-    <p>Access articles and videos on nutrition and health.</p>
-  </div>
-);
 
-const HealthDeviceIntegration = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">Integration with Health Devices</h2>
-    <p>Sync with your fitness trackers for more insights.</p>
-  </div>
-);
-
-const CommunitySupport = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">Community Support</h2>
-    <p>Join forums, challenges, and webinars here.</p>
-  </div>
-);
-
-const GamificationFeatures = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">Gamification Features</h2>
-    <p>Earn rewards and track your achievements.</p>
-  </div>
-);
-
-const SubscriptionOptions = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">Subscription Options</h2>
-    <p>Explore free and premium plans with advanced features.</p>
-  </div>
-);
-
-export default NutritionGuidance;
+export default NutritionDetails;
