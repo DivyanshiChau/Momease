@@ -33,10 +33,10 @@ export const Services = () => {
   }
 
   return (
-    <div className="min-h-screen bg-pink-50 py-12">
+    <div className="min-h-screen bg-pink-50 py-20 mt-12 font-serif">
       {/* Hero Section */}
       <section className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-pink-800 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-pink-800 mb-10">
           MOMEASE is built for every woman
         </h1>
         <p className="text-pink-600 text-lg max-w-2xl mx-auto px-4 mb-8">
@@ -57,7 +57,7 @@ export const Services = () => {
                 icon={<Star className="w-12 h-12 text-pink-600" />}
                 title="Verified Nannies"
                 description="Top-quality nanny services, verified and trained for your peace of mind."
-                features={['Newborn care', 'Early child development', 'First aid certified']}
+                features={['Newborn care', 'Early child development', 'First aid certified','Fully secure']}
                 showDetails={showNannyDetails}
                 onButtonClick={() => handleButtonClick(setShowNannyDetails)}
               />
@@ -68,7 +68,7 @@ export const Services = () => {
               <ServiceCard
                 icon={<Brain className="w-12 h-12 text-pink-600" />}
                 title="Mental Health Support"
-                description="Access to specialized psychologists and psychiatrists for postpartum care."
+                description="Access to specialized psychologists & psychiatrists for postpartum care."
                 features={['One-on-one counseling', 'Group therapy sessions', 'Depression screening', 'Anxiety management']}
                 showDetails={showMentalHealthDetails}
                 onButtonClick={() => handleButtonClick(setShowMentalHealthDetails)}
@@ -79,7 +79,7 @@ export const Services = () => {
             <div className="transform transition duration-500 hover:scale-105 border-2 border-pink-300 rounded-lg p-6">
               <ServiceCard
                 icon={<Utensils className="w-12 h-12 text-pink-600" />}
-                title="Personalized journey tracker"
+                title="Nutrition tracker"
                 description="Personalized diet plans from expert dieticians."
                 features={['Customized meal plans', 'Dietary consultations', 'Nutritional workshops', 'Recipe suggestions']}
                 showDetails={showNutritionDetails}
@@ -91,7 +91,7 @@ export const Services = () => {
             <div className="transform transition duration-500 hover:scale-105 border-2 border-pink-300 rounded-lg p-6">
               <ServiceCard
                 icon={<Heart className="w-12 h-12 text-pink-600" />}
-                title="Holistic Care"
+                title="Personalized journey tracker"
                 description="Comprehensive wellness programs for mothers."
                 features={['Yoga sessions', 'Meditation guides', 'Physical therapy', 'Sleep consulting']}
                 showDetails={showHolisticCareDetails}

@@ -19,15 +19,15 @@ export const Home = () => {
         </div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-7xl font-serif
-           text-pink-300 mb-6">
-            Supporting Every Step of Your Journey
+           text-pink-200 mb-6">
+            We care for you, so that you can care for others
           </h1>
-          <p className="text-xl text-pink-700 mb-8">
+          <p className="text-xl font-serif text-pink-300 mb-8">
             Comprehensive postpartum care tailored to your unique needs
           </p>
           <Link
             to="/register"
-            className="inline-block bg-pink-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-pink-700 transition-colors"
+            className="inline-block bg-pink-600 text-white px-8 py-4 rounded-lg text-lg font-serif hover:bg-pink-700 transition-colors"
           >
             Start Your Journey
           </Link>
@@ -35,8 +35,9 @@ export const Home = () => {
       </section>
 
       {/* Services Overview */}
-      <section className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-pink-800 text-center mb-10">
+      <section className="container mx-auto px-6 font-serif">
+        <h2 className="text-4xl font-bold text-pink-800 text-center mb-10"> <br>
+        </br>
           Our Services
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -69,8 +70,9 @@ export const Home = () => {
 
       {/* Features */}
       <section className="bg-pink-100 py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-pink-800 text-center mb-12">
+        <div className="max-w-7xl mx-auto px-4 font-serif">
+          <h2 className="text-4xl font-serif text-pink-800 text-center mb-12"><br>
+          </br>
             Why Choose MomEase?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -89,6 +91,8 @@ export const Home = () => {
               title="Holistic Care"
               description="Comprehensive support for both physical and mental well-being"
             />
+            <br>
+            </br>
           </div>
         </div>
       </section>

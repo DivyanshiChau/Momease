@@ -6,7 +6,7 @@ export const Register = () => {
   const [isSignIn, setIsSignIn] = useState<boolean>(false);
 
   return (
-    <div className="min-h-screen bg-pink-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-pink-50 py-12 px-4 sm:px-6 lg:px-8 mt-12 font-serif"><br></br><br></br>
       {!isSignIn ? (
         !role ? (
           <div className="max-w-3xl mx-auto">

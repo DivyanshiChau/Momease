@@ -3,7 +3,7 @@ import { Book, Video, FileText, Download } from 'lucide-react';
 
 export const Education = () => {
   return (
-    <div className="min-h-screen bg-pink-50 py-12">
+    <div className="min-h-screen bg-pink-50 py-12 mt-12 font-serif"> <br></br>
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <section className="text-center mb-16">

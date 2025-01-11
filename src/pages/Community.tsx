@@ -3,21 +3,21 @@ import { Users, Calendar, MessageCircle } from 'lucide-react';
 
 export const Community = () => {
   return (
-    <div className="min-h-screen bg-pink-50 py-12">
+    <div className="min-h-screen bg-pink-50 py-12 mt-12 font-serif">
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <section className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-pink-800 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-pink-800 mb-4"><br></br>
             Join Our Community
           </h1>
           <p className="text-pink-600 text-lg max-w-2xl mx-auto">
-            Connect with other mothers, share experiences, and support each other through your journey
+            You are not alone, Connect with other mothers, share experiences, and support each other through your journey
           </p>
         </section>
 
         {/* Discussion Forums */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-pink-800 mb-8">Discussion Forums</h2>
+          <h2 className="text-3xl font-bold text-pink-800 mb-8">Discussion Forums</h2><br></br>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {forums.map((forum) => (
               <ForumCard key={forum.id} {...forum} />
