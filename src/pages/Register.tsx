@@ -3,43 +3,55 @@ import { motion } from 'framer-motion';
 
 export const Register = () => {
   const [role, setRole] = useState<'mother' | 'nanny' | null>(null);
+  const [isSignIn, setIsSignIn] = useState<boolean>(false);
 
   return (
     <div className="min-h-screen bg-pink-50 py-12 px-4 sm:px-6 lg:px-8">
-      {!role ? (
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold text-pink-800 text-center mb-8">
-            Choose Your Role
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <RoleCard
-              title="I'm a Mother"
-              description="Get personalized care and support through your journey"
-              onClick={() => setRole('mother')}
-              features={[
-                'Personalized care plans',
-                'Access to verified nannies',
-                'Mental health support',
-                'Nutrition guidance',
-                'Government scheme eligibility check'
-              ]}
-            />
-            <RoleCard
-              title="I'm a Nanny"
-              description="Join our platform to provide care and support"
-              onClick={() => setRole('nanny')}
-              features={[
-                'Flexible work opportunities',
-                'Professional training',
-                'Verified profile badge',
-                'Direct client communication',
-                'Competitive compensation'
-              ]}
-            />
+      {!isSignIn ? (
+        !role ? (
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-4xl font-bold text-pink-800 text-center mb-8">
+              Choose Your Role
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <RoleCard
+                title="I'm a Mother"
+                description="Get personalized care and support through your journey"
+                onClick={() => setRole('mother')}
+                features={[
+                  'Personalized care plans',
+                  'Access to verified nannies',
+                  'Mental health support',
+                  'Nutrition guidance',
+                  'Government scheme eligibility check'
+                ]}
+              />
+              <RoleCard
+                title="I'm a Nanny"
+                description="Join our platform to provide care and support"
+                onClick={() => setRole('nanny')}
+                features={[
+                  'Flexible work opportunities',
+                  'Professional training',
+                  'Verified profile badge',
+                  'Direct client communication',
+                  'Competitive compensation'
+                ]}
+              />
+            </div>
+            <div className="my-8 border-t border-pink-300"></div>
+            <button
+              onClick={() => setIsSignIn(true)}
+              className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700"
+            >
+              Already have an account? Sign In
+            </button>
           </div>
-        </div>
+        ) : (
+          <RegistrationForm role={role} onBack={() => setRole(null)} />
+        )
       ) : (
-        <RegistrationForm role={role} onBack={() => setRole(null)} />
+        <SignInForm onBack={() => setIsSignIn(false)} />
       )}
     </div>
   );
@@ -67,22 +79,17 @@ const RoleCard = ({ title, description, features, onClick }) => (
 const RegistrationForm = ({ role, onBack }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    // Common fields
     name: '',
     email: '',
     password: '',
     language: '',
     phone: '',
-    
-    // Mother-specific fields
     postpartumStage: '',
     medicalConditions: [],
     dietaryRestrictions: [],
     incomeRange: '',
     employed: false,
     maternityLeaveStatus: '',
-    
-    // Nanny-specific fields
     experience: '',
     motherTongue: '',
     aadharNumber: '',
@@ -103,7 +110,7 @@ const RegistrationForm = ({ role, onBack }) => {
       >
         ← Back to role selection
       </button>
-      
+
       <form onSubmit={handleSubmit} className="space-y-8">
         {role === 'mother' ? (
           <MotherRegistrationForm
@@ -120,6 +127,52 @@ const RegistrationForm = ({ role, onBack }) => {
             setFormData={setFormData}
           />
         )}
+      </form>
+    </div>
+  );
+};
+
+const SignInForm = ({ onBack }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    // TODO: Implement sign-in logic
+    console.log('Sign In:', email, password);
+  };
+
+  return (
+    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <button onClick={onBack} className="mb-4 text-pink-600 hover:text-pink-700">← Back</button>
+      <h2 className="text-2xl font-bold text-pink-800 mb-4">Sign In</h2>
+      <form onSubmit={handleSignIn} className="space-y-4">
+        <div>
+          <label className="block text-pink-700 mb-2">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-3 border border-pink-200 rounded-md"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-pink-700 mb-2">Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 border border-pink-200 rounded-md"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700"
+        >
+          Sign In
+        </button>
       </form>
     </div>
   );
@@ -219,11 +272,23 @@ const MotherRegistrationForm = ({ step, setStep, formData, setFormData }) => {
               required
             >
               <option value="">Select range</option>
-              <option value="below-2l">Below 2 Lakhs</option>
-              <option value="2l-5l">2-5 Lakhs</option>
-              <option value="5l-10l">5-10 Lakhs</option>
-              <option value="above-10l">Above 10 Lakhs</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
+          </div>
+          <div>
+            <label className="block text-pink-700 mb-2">Employed?</label>
+            <input
+              type="checkbox"
+              name="employed"
+              checked={formData.employed}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, employed: e.target.checked }))
+              }
+              className="mr-2"
+            />
+            Yes, I am employed
           </div>
           <div className="flex space-x-4">
             <button
@@ -237,7 +302,7 @@ const MotherRegistrationForm = ({ step, setStep, formData, setFormData }) => {
               type="submit"
               className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700"
             >
-              Complete Registration
+              Submit
             </button>
           </div>
         </>
@@ -286,105 +351,6 @@ const NannyRegistrationForm = ({ step, setStep, formData, setFormData }) => {
           >
             Next
           </button>
-        </>
-      )}
-
-      {step === 2 && (
-        <>
-          <h2 className="text-2xl font-bold text-pink-800">Verification Details</h2>
-          <div>
-            <label className="block text-pink-700 mb-2">Aadhar Number</label>
-            <input
-              type="text"
-              name="aadharNumber"
-              value={formData.aadharNumber}
-              onChange={handleChange}
-              className="w-full p-3 border border-pink-200 rounded-md"
-              required
-              pattern="\d{12}"
-              title="Please enter a valid 12-digit Aadhar number"
-            />
-          </div>
-          <div>
-            <label className="block text-pink-700 mb-2">Years of Experience</label>
-            <input
-              type="number"
-              name="experience"
-              value={formData.experience}
-              onChange={handleChange}
-              className="w-full p-3 border border-pink-200 rounded-md"
-              required
-              min="0"
-            />
-          </div>
-          <div className="flex space-x-4">
-            <button
-              type="button"
-              onClick={() => setStep(1)}
-              className="w-full bg-pink-100 text-pink-600 py-3 rounded-md hover:bg-pink-200"
-            >
-              Back
-            </button>
-            <button
-              type="button"
-              onClick={() => setStep(3)}
-              className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700"
-            >
-              Next
-            </button>
-          </div>
-        </>
-      )}
-
-      {step === 3 && (
-        <>
-          <h2 className="text-2xl font-bold text-pink-800">Professional Details</h2>
-          <div>
-            <label className="block text-pink-700 mb-2">Mother Tongue</label>
-            <input
-              type="text"
-              name="motherTongue"
-              value={formData.motherTongue}
-              onChange={handleChange}
-              className="w-full p-3 border border-pink-200 rounded-md"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-pink-700 mb-2">Specializations</label>
-            <select
-              multiple
-              name="specializations"
-              value={formData.specializations}
-              onChange={(e) => {
-                const values = Array.from(e.target.selectedOptions, option => option.value);
-                setFormData(prev => ({ ...prev, specializations: values }));
-              }}
-              className="w-full p-3 border border-pink-200 rounded-md"
-              required
-            >
-              <option value="newborn">Newborn Care</option>
-              <option value="twins">Twins/Multiples</option>
-              <option value="special-needs">Special Needs</option>
-              <option value="sleep-training">Sleep Training</option>
-              <option value="first-aid">First Aid Certified</option>
-            </select>
-          </div>
-          <div className="flex space-x-4">
-            <button
-              type="button"
-              onClick={() => setStep(2)}
-              className="w-full bg-pink-100 text-pink-600 py-3 rounded-md hover:bg-pink-200"
-            >
-              Back
-            </button>
-            <button
-              type="submit"
-              className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700"
-            >
-              Complete Registration
-            </button>
-          </div>
         </>
       )}
     </div>
