@@ -3,9 +3,8 @@
 MomEase is a comprehensive web platform designed to support mothers through their parenting journey, offering tools, resources, and community connections to make motherhood more manageable and enjoyable.
 
 ## 🌟 Key Features
-
+- *verifies nannies*: full background checkup for the nannies, one can have no of free meetings before actually booking
 - *Pregnancy Tracker*: Week-by-week guidance and milestone tracking
-- *Baby Development Monitor*: Track your baby's growth and developmental milestones
 - *Community Forum*: Connect with other mothers and share experiences
 - *Resource Library*: Access expert articles, tips, and parenting guides
 - *Appointment Scheduler*: Keep track of medical appointments and vaccinations
@@ -46,7 +45,8 @@ MomEase addresses a critical need in the modern parenting landscape. With increa
 
 ### Solution
 MomEase provides an all-in-one platform that:
-- Simplifies baby development tracking
+- Nannies provides
+- Mental health tracker
 - Creates supportive communities
 - Delivers expert-verified information
 - Organizes important appointments and milestones
