@@ -1,5 +1,1 @@
-Flask==2.2.3
-
-python-dotenv==1.0.0
-groclake==0.1.14
 
