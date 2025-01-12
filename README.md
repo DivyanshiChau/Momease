@@ -1,15 +1,72 @@
-# Momease
+# MomEase - Simplifying Motherhood Journey
 
-Momease
-Momease is a platform dedicated to providing postpartum care and support for new mothers. Our platform connects mothers with essential services such as nannies, mental health support, nutrition tracking, and a personalized journey tracker to ensure the best postpartum experience.
-![Uploading image.png…]()
+MomEase is a comprehensive web platform designed to support mothers through their parenting journey, offering tools, resources, and community connections to make motherhood more manageable and enjoyable.
+
+## 🌟 Key Features
+
+- *Pregnancy Tracker*: Week-by-week guidance and milestone tracking
+- *Baby Development Monitor*: Track your baby's growth and developmental milestones
+- *Community Forum*: Connect with other mothers and share experiences
+- *Resource Library*: Access expert articles, tips, and parenting guides
+- *Appointment Scheduler*: Keep track of medical appointments and vaccinations
+
+## 💻 Tech Stack
+
+- React.js
+- Tailwind CSS
+- Supabase
+- TypeScript
+
+## 🚀 Getting Started
+
+1. Clone the repository
+bash
+git clone https://github.com/yourusername/momease.git
 
 
-Key Features
-Nanny Services: Easily connect with trained and experienced nannies to help take care of your newborn and assist in daily tasks, giving mothers the rest and support they need.
+2. Install dependencies
+bash
+npm install
 
-Mental Health Support: Mental health is an essential part of postpartum care. Momease provides access to professionals and resources to support mothers emotionally during this critical time.
 
-Nutrition Tracking: Our platform offers personalized nutrition plans and tracking tools to help new mothers recover and stay healthy after childbirth.
+3. Start the development server
+bash
+npm run dev
 
-Personalized Journey Tracker: Track your postpartum journey, set milestones, and receive reminders for key activities such as check-ups and wellness practices.
+
+## 📝 Project Pitch
+
+MomEase addresses a critical need in the modern parenting landscape. With increasing numbers of mothers juggling careers and family life, there's a growing demand for digital solutions that streamline the parenting journey.
+
+### Problem
+- New mothers often feel overwhelmed and isolated
+- Difficulty tracking baby's development and medical appointments
+- Challenge in finding reliable parenting information
+- Limited access to experienced mother communities
+
+### Solution
+MomEase provides an all-in-one platform that:
+- Simplifies baby development tracking
+- Creates supportive communities
+- Delivers expert-verified information
+- Organizes important appointments and milestones
+
+### Market Opportunity
+- Global parenting apps market size: $465.3 million (2021)
+- Expected CAGR: 18.5% (2022-2029)
+- Target audience: 85.4 million mothers in the US alone
+
+### Competitive Advantage
+- User-friendly interface designed specifically for busy mothers
+- Community-first approach
+- Evidence-based resources
+- Comprehensive tracking tools
+- Mobile-responsive design
+
+## 📄 License
+
+MIT License - feel free to use this project for your own purposes.
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
