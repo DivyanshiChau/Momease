@@ -1,5 +1,7 @@
 # MomEase - Simplifying Motherhood Journey
 
+checkout it at: https://momease1.vercel.app/
+
 MomEase is a comprehensive web platform designed to support mothers through their parenting journey, offering tools, resources, and community connections to make motherhood more manageable and enjoyable.
 
 ## 🌟 Key Features
