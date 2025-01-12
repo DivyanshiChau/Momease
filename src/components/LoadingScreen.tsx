@@ -29,7 +29,7 @@ export const LoadingScreen = () => {
               transition={{ duration: 2, repeat: Infinity }}
             >
               <span role="img" aria-label="heart" className="mr-2">❤️</span>
-              Dedicated to all mothers
+              Dedicated to all the mothers
               <span role="img" aria-label="heart" className="ml-2">❤️</span>
             </motion.h1>
           </motion.div>

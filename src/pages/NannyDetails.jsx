@@ -4,7 +4,8 @@ import priyaImage from '../assets/n1.jpg';
 import sarahImage from '../assets/n2.jpg';
 import raniImage from '../assets/n3.jpg';
 
-
+<br>
+</br>
 const nannies = [
   {
     id: 1,
@@ -82,7 +83,7 @@ const NannyDetails = ({ onBack }) => {
   return (
     <div className="min-h-screen bg-pink-50 p-8 animate-fade-in relative">
       {showMessage && (
-        <div className="fixed top-5 right-4 bg-pink-600 text-white py-2 px-4 rounded shadow-lg z-50">
+        <div className="fixed top-5 right-4 bg-pink-600 text-white py-2 px-4 rounded shadow-lg z-50 font-serif">
           Meeting fixed on {meetingDate}. More details will be shared shortly.
         </div>
       )}
@@ -95,7 +96,7 @@ const NannyDetails = ({ onBack }) => {
   Back to Services
 </button>
 
-      <h2 className="text-4xl font-bold text-pink-800 mb-12 text-center animate-slide-down">
+      <h2 className="text-4xl font-serif text-pink-800 mb-12 text-center animate-slide-down mt-12">
         Our Verified Nannies
       </h2>
 
