@@ -2,6 +2,8 @@
 
 Momease
 Momease is a platform dedicated to providing postpartum care and support for new mothers. Our platform connects mothers with essential services such as nannies, mental health support, nutrition tracking, and a personalized journey tracker to ensure the best postpartum experience.
+![Uploading image.png…]()
+
 
 Key Features
 Nanny Services: Easily connect with trained and experienced nannies to help take care of your newborn and assist in daily tasks, giving mothers the rest and support they need.
